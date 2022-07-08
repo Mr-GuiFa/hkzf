@@ -1,0 +1,16 @@
+{
+  "id": "3495931",
+  "name": "房子",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "11521313",
+      "name": "地图",
+      "font_class": "ditu",
+      "unicode": "e778",
+      "unicode_decimal": 59256
+    }
+  ]
+}

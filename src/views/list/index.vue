@@ -1,13 +1,11 @@
 <template>
-  <div id="app">
-   <router-view></router-view>
-  </div>
+  <div>找房</div>
 </template>
 
 <script>
 export default {
-}
 
+}
 </script>
 
 <style>
