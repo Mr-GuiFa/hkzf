@@ -5,19 +5,19 @@
   style="background:#1cb676"
 >
 <template #left >
-<a href="/" style="color:white">{{ jt }}</a>
+<a href="http://localhost:5545/#/home/profile" style="color:white">{{ jt }}</a>
 </template>
 </van-nav-bar>
-<div ref="from">
-  <van-form @submit="onSubmit" >
+<div >
+  <van-form  ref="from">
   <van-field
-    v-model="username"
+    v-model="user.username"
     name="username"
     placeholder="请输入账号"
     :rules="rules.username"
   />
   <van-field
-    v-model="password"
+    v-model="user.password"
     type="password"
     name="password"
     number
@@ -25,7 +25,7 @@
     :rules="rules.password"
   />
   <div style="margin: 16px;">
-    <van-button @click="loginUp"  block type="info" native-type="submit" style="background:#1cb676">登录</van-button>
+    <van-button  @click="loginUp" block native-type="button" style="background:#1cb676">登录</van-button>
   </div>
 </van-form>
 </div>
@@ -33,14 +33,16 @@
 </template>
 
 <script>
+import { login } from '@/api/user.js'
 import { Toast } from 'vant'
 export default {
   data () {
     return {
       jt: '<',
-      username: '',
-      password: '',
-      onSubmit: '',
+      user: {
+        username: '',
+        password: ''
+      },
       rules: {
         username: [
           {
@@ -48,7 +50,7 @@ export default {
             message: '账号或密码不能为空'
           },
           {
-            pattern: /[A-Za-z0-9]{8}/,
+            pattern: /[A-Za-z0-9]{5,8}/,
             message: '用户名格式5-8位的字母和数字'
           }
         ],
@@ -66,14 +68,19 @@ export default {
   },
   methods: {
     banck () {
-      this.$store.push('/profile')
+      this.$router.push('/home/profile')
     },
-    loginUp () {
+    async loginUp () {
       try {
-        this.$refs.from.validata('mobile')
+        const user = this.user
+        console.log(user)
+        const res = await login(this.user)
+        console.log(res)
+        this.$store.commit('setUser', res.data.body)
         Toast.success('登陆成功')
-      } catch (error) {
-
+        this.$router.push('/')
+      } catch (e) {
+        console.log(e)
       }
     }
   }

@@ -7,7 +7,7 @@
         <van-tabbar-item name="news" icon="friends-o" to="/home/news">资讯</van-tabbar-item>
         <van-tabbar-item name="profile" icon="setting-o" to="/home/profile">我的</van-tabbar-item>
 </van-tabbar>
-<router-view></router-view>
+<router-view :key="this.$route.path"></router-view>
     </div>
 </div>
 </template>

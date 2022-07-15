@@ -29,6 +29,18 @@ const routes = [
       path: '/home/profile',
       component: () => import('@/views/profile')
     }]
+  },
+  {
+    path: '/rent',
+    component: () => import('@/views/profile/component/rent.vue')
+  },
+  {
+    path: '/favorate',
+    component: () => import('@/views/profile/component/favorate.vue')
+  },
+  {
+    path: '/city',
+    component: () => import('@/views/home/components/city.vue')
   }
 ]
 

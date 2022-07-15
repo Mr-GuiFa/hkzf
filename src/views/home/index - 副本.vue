@@ -23,7 +23,7 @@
         /></van-swipe-item>
       </van-swipe>
       <!-- 搜索框 -->
-      <div click="changeMap"><i class="iconfont icon-ditu" id="icon"></i></div>
+      <div click="changeMap" @click="ciitylist"><i class="iconfont icon-ditu" id="icon"></i></div>
       <div class="search">
         <form action="/">
           <van-search
@@ -31,9 +31,8 @@
             placeholder="请输入小区或地址"
             background="none"
             right-icon="#icon-ditu"
-          ><template #label >
-           <span @click="ciitylist"> 北京<t style="color:#ccc">▼|</t></span>
-          </template></van-search>
+            label="北京"
+          />
         </form>
       </div>
     </div>
@@ -76,6 +75,7 @@ export default {
     ciitylist () {
       this.$router.push('/city')
     }
+
   }
 }
 </script>
